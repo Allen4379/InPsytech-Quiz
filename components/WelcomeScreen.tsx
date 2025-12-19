@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from './Button';
-import { Gift, Sparkles } from 'lucide-react';
+import { ArrowRight, Ticket } from 'lucide-react';
 
 interface WelcomeScreenProps {
   onStart: () => void;
@@ -8,67 +8,68 @@ interface WelcomeScreenProps {
 
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
   return (
-    <div className="flex flex-col items-center justify-center animate-fade-in space-y-8 w-full min-h-[60vh]">
+    <div className="flex flex-col items-center justify-center w-full h-full relative z-10 animate-fade-in overflow-hidden">
       
-      {/* Brand / Title Area */}
-      <div className="text-center space-y-4 relative z-10 w-full">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pandora-cyan/20 blur-[80px] rounded-full -z-10 animate-pulse-slow"></div>
+      {/* Main Glass Card */}
+      <div className="w-full relative group perspective-1000">
+        {/* Ambient Glow */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-pandora-cyan/20 via-pandora-purple/20 to-transparent blur-3xl transform scale-110 opacity-60 animate-pulse-slow"></div>
         
-        {/* Host Info */}
-        <h2 className="text-pandora-cyan font-display tracking-[0.2em] text-xl uppercase font-bold mb-2 drop-shadow-md">
-          INPSYTECH PRESENTS
-        </h2>
-        
-        {/* Main Event Title - Highlighting Company Event */}
-        <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tight drop-shadow-2xl leading-tight font-display mb-2">
-          乾瞻科技<br/>
-          <span className="text-4xl md:text-5xl mt-2 block text-white/90">電影欣賞活動</span>
-        </h1>
+        <div className="relative glass-panel p-6 sm:p-8 rounded-[2rem] border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] backdrop-blur-2xl">
+           
+           {/* Top Label */}
+           <div className="flex justify-center mb-6">
+             <div className="bg-white/10 px-5 py-2 rounded-full border border-white/10 flex items-center space-x-3 backdrop-blur-md">
+               <span className="w-2 h-2 rounded-full bg-pandora-cyan animate-pulse"></span>
+               <span className="text-sm text-pandora-cyan font-display tracking-widest uppercase font-bold">
+                 員工專屬活動 | Event
+               </span>
+             </div>
+           </div>
 
-        {/* Movie Context */}
-        <div className="inline-block mt-4 px-6 py-3 rounded-2xl glass-panel border-pandora-cyan/30 bg-pandora-cyan/5">
-           <span className="text-pandora-cyan font-display font-bold text-xl md:text-2xl tracking-wider drop-shadow-lg">
-             阿凡達：火與燼
-           </span>
+           {/* Title Section */}
+           <div className="text-center space-y-4 mb-8">
+              <h1 className="text-4xl font-display font-bold text-white leading-tight tracking-tight drop-shadow-lg">
+                乾瞻科技
+                <br />
+                電影之夜
+                <span className="block text-xl text-white/80 mt-2 font-sans font-normal tracking-wide">
+                  InPsytech Movie Night
+                </span>
+              </h1>
+              
+              <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto my-6"></div>
+              
+              <div className="space-y-1">
+                <p className="font-display text-pandora-cyan text-2xl tracking-wide font-bold">
+                  阿凡達：火與燼
+                </p>
+                {/* Updated to use font-display (Cinzel) for the English title */}
+                <p className="font-display text-pandora-cyan/80 text-xl tracking-wider">
+                  Avatar: Fire and Ash
+                </p>
+              </div>
+           </div>
+
+           {/* Value Proposition */}
+           <div className="bg-black/20 rounded-2xl p-4 mb-8 border border-white/5 flex items-center space-x-5">
+              <div className="w-14 h-14 rounded-full bg-pandora-cyan/10 flex items-center justify-center shrink-0 border border-pandora-cyan/30">
+                <Ticket size={28} className="text-pandora-cyan" />
+              </div>
+              <div className="text-left">
+                <p className="text-white font-bold text-lg">回答問題，兌換餐點</p>
+                <p className="text-white/60 text-base mt-1">Answer quiz to get meal set</p>
+              </div>
+           </div>
+
+           {/* Action Button */}
+           <Button onClick={onStart} className="!w-full !text-xl !py-5 shadow-neon-cyan/20">
+              <div className="flex items-center justify-center space-x-3">
+                <span>開始挑戰 | Start</span>
+                <ArrowRight size={22} />
+              </div>
+           </Button>
         </div>
-      </div>
-
-      {/* Incentive Card */}
-      <div className="w-full glass-panel rounded-3xl p-8 text-center space-y-6 border border-pandora-cyan/50 shadow-[0_0_40px_rgba(34,211,238,0.2)] relative overflow-hidden bg-white/10">
-        {/* Shine effect */}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-transparent via-white/10 to-transparent skew-x-12 opacity-50"></div>
-        
-        <div className="inline-flex items-center justify-center p-5 bg-pandora-purple/30 rounded-full text-pandora-purple ring-2 ring-pandora-purple/70 mb-2 shadow-neon-purple">
-          <Gift size={40} className="text-white" />
-        </div>
-
-        <div className="space-y-4">
-          <div className="text-white leading-relaxed font-normal text-xl space-y-6">
-            <p className="font-bold text-2xl">
-              為了讓大家更了解我們公司<br/>
-              設計了 <span className="text-pandora-cyan font-black text-3xl mx-1">5</span> 個小問答
-            </p>
-            
-            <div className="h-px w-1/2 bg-white/20 mx-auto"></div>
-
-            <p className="text-xl">
-              全部回答完成後<br/>
-              即可向工作人員領取<br/>
-              <span className="text-white font-bold text-3xl border-b-2 border-pandora-cyan pb-1 inline-block mt-3 shadow-[0_4px_0_rgba(34,211,238,0.3)]">🍿 爆米花 & 🥤 飲料</span><br/>
-              <span className="text-lg text-white/70 mt-2 block font-display tracking-widest uppercase">兌換券</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Action Button */}
-      <div className="w-full pt-4">
-        <Button onClick={onStart}>
-          <div className="flex items-center space-x-3">
-            <Sparkles size={24} />
-            <span>開始挑戰</span>
-          </div>
-        </Button>
       </div>
       
     </div>
