@@ -38,7 +38,8 @@
               'float': 'float 6s ease-in-out infinite',
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'shine': 'shine 3s infinite',
-              'breathing': 'breathing 2.5s ease-in-out infinite', // Anti-screenshot breathing
+              'breathing': 'breathing 2.5s ease-in-out infinite',
+              'fade-in': 'fadeIn 0.5s ease-out',
             },
             keyframes: {
               float: {
@@ -58,6 +59,10 @@
                   boxShadow: '0 0 40px rgba(34, 211, 238, 0.8)',
                   borderColor: 'rgba(34, 211, 238, 1)'
                 }
+              },
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'scale(0.98)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
               }
             }
           }

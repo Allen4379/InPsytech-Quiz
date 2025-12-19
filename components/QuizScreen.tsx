@@ -93,7 +93,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
           </div>
         )}
 
-        <div className="glass-panel p-6 rounded-3xl border-l-4 border-l-pandora-cyan w-full">
+        <div className="glass-panel p-6 rounded-3xl border-l-4 border-l-pandora-cyan w-full max-h-full overflow-y-auto">
            <h2 className="text-2xl font-bold text-white leading-relaxed">
             {question.q}
            </h2>
